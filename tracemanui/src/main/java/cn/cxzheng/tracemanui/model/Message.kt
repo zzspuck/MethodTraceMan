@@ -1,4 +1,4 @@
-package com.ctrip.ibu.hotel.debug.server.model
+package cn.cxzheng.tracemanui.model
 
 import cn.cxzheng.tracemanui.utils.JsonUtil
 

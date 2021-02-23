@@ -1,12 +1,12 @@
 package cn.cxzheng.tracemanplugin
 
-import com.android.tools.build.jetifier.core.utils.Log
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.commons.AdviceAdapter
 
 /**
  * Create by cxzheng on 2019/6/4
- * Method Visitor
+ * Updated for AGP 8.0+ with ASM 9.x
+ * Method Visitor - 在方法入口和出口处插入耗时统计代码
  */
 class TraceMethodVisitor(
     api: Int, mv: MethodVisitor?, access: Int,

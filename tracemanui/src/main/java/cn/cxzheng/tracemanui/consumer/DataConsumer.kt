@@ -1,14 +1,13 @@
-package com.ctrip.ibu.hotel.debug.server.consumer
+package cn.cxzheng.tracemanui.consumer
 
-import android.util.Log
 import cn.cxzheng.tracemanui.MethodTraceServerManager
 import cn.cxzheng.tracemanui.MethodTraceServerManager.APPINFO
 import cn.cxzheng.tracemanui.MethodTraceServerManager.METHODCOST
 import cn.cxzheng.tracemanui.TraceManServer
 import cn.cxzheng.tracemanui.utils.LogUtil
-import com.ctrip.ibu.hotel.debug.server.model.Message
-import com.ctrip.ibu.hotel.debug.server.producer.module.appInfo.AppInfoProducer
-import com.ctrip.ibu.hotel.debug.server.producer.module.methodcost.MethodCostProducer
+import cn.cxzheng.tracemanui.model.Message
+import cn.cxzheng.tracemanui.producer.module.appInfo.AppInfoProducer
+import cn.cxzheng.tracemanui.producer.module.methodcost.MethodCostProducer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

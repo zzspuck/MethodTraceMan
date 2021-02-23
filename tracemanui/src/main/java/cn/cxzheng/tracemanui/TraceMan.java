@@ -3,9 +3,10 @@ package cn.cxzheng.tracemanui;
 import android.os.Build;
 import android.os.Looper;
 import android.os.Trace;
-import android.support.annotation.RequiresApi;
 
-import com.ctrip.ibu.hotel.debug.server.producer.module.methodcost.MethodInfo;
+import androidx.annotation.RequiresApi;
+
+import cn.cxzheng.tracemanui.producer.module.methodcost.MethodInfo;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

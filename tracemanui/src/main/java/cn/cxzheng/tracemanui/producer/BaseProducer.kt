@@ -1,4 +1,4 @@
-package com.ctrip.ibu.hotel.debug.server.producer
+package cn.cxzheng.tracemanui.producer
 
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject

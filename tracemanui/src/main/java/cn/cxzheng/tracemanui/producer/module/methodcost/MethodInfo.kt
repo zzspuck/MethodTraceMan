@@ -1,4 +1,4 @@
-package com.ctrip.ibu.hotel.debug.server.producer.module.methodcost
+package cn.cxzheng.tracemanui.producer.module.methodcost
 
 /**
  * Create by cxzheng on 2019/9/9

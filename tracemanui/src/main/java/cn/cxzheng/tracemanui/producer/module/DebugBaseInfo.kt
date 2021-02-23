@@ -1,4 +1,4 @@
-package com.ctrip.ibu.hotel.debug.server.producer.module
+package cn.cxzheng.tracemanui.producer.module
 
 import org.joda.time.DateTime
 

@@ -1,13 +1,13 @@
 package cn.cxzheng.tracemanplugin
 
-import com.android.tools.build.jetifier.core.utils.Log
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 
 /**
  * Create by cxzheng on 2019/6/4
- * Class Visitor
+ * Updated for AGP 8.0+ with ASM 9.x
+ * Class Visitor - 访问类并决定是否对方法进行插桩
  */
 class TraceClassVisitor(api: Int, cv: ClassVisitor?, var traceConfig: Config) :
     ClassVisitor(api, cv) {
@@ -58,7 +58,10 @@ class TraceClassVisitor(api: Int, cv: ClassVisitor?, var traceConfig: Config) :
         exceptions: Array<out String>?
     ): MethodVisitor {
         val isConstructor = MethodFilter.isConstructor(name)
-        return if (isABSClass || isBeatClass || !isConfigTraceClass || isConstructor) {
+        val isAbstractMethod = (access and Opcodes.ACC_ABSTRACT) != 0
+        val isNativeMethod = (access and Opcodes.ACC_NATIVE) != 0
+
+        return if (isABSClass || isBeatClass || !isConfigTraceClass || isConstructor || isAbstractMethod || isNativeMethod) {
             super.visitMethod(access, name, desc, signature, exceptions)
         } else {
             val mv = cv.visitMethod(access, name, desc, signature, exceptions)

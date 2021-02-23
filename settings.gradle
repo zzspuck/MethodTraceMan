@@ -1,2 +1,27 @@
+pluginManagement {
+    // 包含插件项目作为复合构建
+    includeBuild('tracemanplugin')
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url = uri('./repo') }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri('./repo') }
+        maven { url = 'https://jitpack.io' }
+    }
+}
+
+rootProject.name = "MethodTraceMan"
+
 include ':app'
-//include ':app', ':tracemanui',':tracemanplugin', ':tracemanui-noop'
+include ':tracemanui'
+include ':tracemanui-noop'

@@ -4,13 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.net.wifi.WifiManager
 import android.os.Looper
-import android.util.Log
 import cn.cxzheng.tracemanui.utils.LogUtil
-import com.ctrip.ibu.hotel.debug.server.consumer.DataConsumer
-import com.ctrip.ibu.hotel.debug.server.handler.HttpRequestHandler
-import com.ctrip.ibu.hotel.debug.server.handler.WebScoketHandler
-import com.ctrip.ibu.hotel.debug.server.producer.module.appInfo.AppInfoProducer
-import com.ctrip.ibu.hotel.debug.server.producer.module.methodcost.MethodCostProducer
+import cn.cxzheng.tracemanui.consumer.DataConsumer
+import cn.cxzheng.tracemanui.handler.HttpRequestHandler
+import cn.cxzheng.tracemanui.handler.WebScoketHandler
+import cn.cxzheng.tracemanui.producer.module.appInfo.AppInfoProducer
+import cn.cxzheng.tracemanui.producer.module.methodcost.MethodCostProducer
 import com.koushikdutta.async.http.WebSocket
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest
 import com.koushikdutta.async.http.server.AsyncHttpServerResponse
@@ -57,10 +56,10 @@ object MethodTraceServerManager {
     @Synchronized
     @JvmOverloads
     fun startService(
-        context: Context,
+        context: Context?,
         port: Int = DEBUG_SERVER_PORT
     ) {
-        if (isServerRunning) {
+        if (isServerRunning || context == null) {
             return
         }
 

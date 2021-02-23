@@ -1,9 +1,8 @@
-package com.ctrip.ibu.hotel.debug.server.producer.module.appInfo
+package cn.cxzheng.tracemanui.producer.module.appInfo
 
-import com.ctrip.ibu.hotel.debug.server.producer.BaseProducer
+import cn.cxzheng.tracemanui.producer.BaseProducer
 
 /**
  * Create by cxzheng on 2019/7/27
  */
-class AppInfoProducer : BaseProducer<AppInfo>() {
-}
+class AppInfoProducer : BaseProducer<AppInfo>()

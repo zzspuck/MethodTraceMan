@@ -1,4 +1,4 @@
-package com.ctrip.ibu.hotel.debug.server.handler
+package cn.cxzheng.tracemanui.handler
 
 import com.koushikdutta.async.http.WebSocket
 

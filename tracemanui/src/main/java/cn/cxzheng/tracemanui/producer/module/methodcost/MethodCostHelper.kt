@@ -1,7 +1,7 @@
-package com.ctrip.ibu.hotel.debug.server.producer.module.methodcost
+package cn.cxzheng.tracemanui.producer.module.methodcost
 
 import cn.cxzheng.tracemanui.TraceMan
-import com.ctrip.ibu.hotel.debug.server.producer.DataProducer
+import cn.cxzheng.tracemanui.producer.DataProducer
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

@@ -1,13 +1,12 @@
-package com.ctrip.ibu.hotel.debug.server.producer
+package cn.cxzheng.tracemanui.producer
 
 import cn.cxzheng.tracemanui.MethodTraceServerManager
 import cn.cxzheng.tracemanui.MethodTraceServerManager.APPINFO
 import cn.cxzheng.tracemanui.MethodTraceServerManager.METHODCOST
-import cn.cxzheng.tracemanui.MethodTraceServerManager.isActiveTraceMan
-import com.ctrip.ibu.hotel.debug.server.producer.module.appInfo.AppInfo
-import com.ctrip.ibu.hotel.debug.server.producer.module.appInfo.AppInfoProducer
-import com.ctrip.ibu.hotel.debug.server.producer.module.methodcost.MethodCostProducer
-import com.ctrip.ibu.hotel.debug.server.producer.module.methodcost.MethodInfo
+import cn.cxzheng.tracemanui.producer.module.appInfo.AppInfo
+import cn.cxzheng.tracemanui.producer.module.appInfo.AppInfoProducer
+import cn.cxzheng.tracemanui.producer.module.methodcost.MethodCostProducer
+import cn.cxzheng.tracemanui.producer.module.methodcost.MethodInfo
 
 /**
  * Create by cxzheng on 2019/7/23

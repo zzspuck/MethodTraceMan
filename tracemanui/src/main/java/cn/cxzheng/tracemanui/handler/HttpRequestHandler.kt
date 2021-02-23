@@ -1,4 +1,4 @@
-package com.ctrip.ibu.hotel.debug.server.handler
+package cn.cxzheng.tracemanui.handler
 
 import android.content.Context
 import android.content.res.AssetManager
@@ -22,7 +22,6 @@ class HttpRequestHandler : IHttpRequestHandler {
     }
 
     override fun handle(path: String): Map<String, String?> {
-//        Log.i(DEBUG_SERVER_TAG, path)
         var resultPath: String? = null
         if (path.startsWith("/")) {
             resultPath = path.substring(1)

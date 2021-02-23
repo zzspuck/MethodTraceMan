@@ -1,10 +1,11 @@
 package cn.cxzheng.tracemanplugin
 
 import java.io.File
-import java.util.HashSet
+import java.io.FileNotFoundException
 
 /**
  * Create by cxzheng on 2019/6/4
+ * Updated for AGP 8.0+
  */
 class Config {
 
@@ -108,8 +109,14 @@ class Config {
      */
     fun parseTraceConfigFile() {
 
-        System.out.println("parseTraceConfigFile start!!!!!!!!!!!!")
-        val traceConfigFile = File(mTraceConfigFile)
+        println("[MethodTraceMan] parseTraceConfigFile: $mTraceConfigFile")
+
+        if (mTraceConfigFile.isNullOrEmpty()) {
+            println("[MethodTraceMan] Warning: traceConfigFile is not set")
+            return
+        }
+
+        val traceConfigFile = File(mTraceConfigFile!!)
         if (!traceConfigFile.exists()) {
             throw FileNotFoundException(
                 """
@@ -121,53 +128,51 @@ class Config {
 
         val configStr = Utils.readFileAsString(traceConfigFile.absolutePath)
 
-        val configArray =
-            configStr.split(System.lineSeparator().toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        // 处理跨平台换行符
+        val configArray = configStr
+            .replace("\r\n", "\n")
+            .replace("\r", "\n")
+            .split("\n")
+            .filter { it.isNotEmpty() }
 
-        if (configArray != null) {
-            for (i in 0 until configArray.size) {
-                var config = configArray[i]
-                if (config.isNullOrBlank()) {
-                    continue
-                }
-                if (config.startsWith("#")) {
-                    continue
-                }
-                if (config.startsWith("[")) {
-                    continue
-                }
+        for (config in configArray) {
+            var line = config.trim()
 
-                when {
-                    config.startsWith("-tracepackage ") -> {
-                        config = config.replace("-tracepackage ", "")
-                        mNeedTracePackageMap.add(config)
-                        System.out.println("tracepackage:$config")
-                    }
-                    config.startsWith("-keepclass ") -> {
-                        config = config.replace("-keepclass ", "")
-                        mWhiteClassMap.add(config)
-                        System.out.println("keepclass:$config")
-                    }
-                    config.startsWith("-keeppackage ") -> {
-                        config = config.replace("-keeppackage ", "")
-                        mWhitePackageMap.add(config)
-                        System.out.println("keeppackage:$config")
-                    }
-                    config.startsWith("-beatclass ") -> {
-                        config = config.replace("-beatclass ", "")
-                        mBeatClass = config
-                        System.out.println("beatclass:$config")
-                    }
-                    else -> {
-                    }
-                }
+            if (line.isBlank()) {
+                continue
+            }
+            if (line.startsWith("#")) {
+                continue
+            }
+            if (line.startsWith("[")) {
+                continue
             }
 
+            when {
+                line.startsWith("-tracepackage ") -> {
+                    line = line.replace("-tracepackage ", "").trim()
+                    mNeedTracePackageMap.add(line)
+                    println("[MethodTraceMan] tracepackage: $line")
+                }
+                line.startsWith("-keepclass ") -> {
+                    line = line.replace("-keepclass ", "").trim()
+                    mWhiteClassMap.add(line)
+                    println("[MethodTraceMan] keepclass: $line")
+                }
+                line.startsWith("-keeppackage ") -> {
+                    line = line.replace("-keeppackage ", "").trim()
+                    mWhitePackageMap.add(line)
+                    println("[MethodTraceMan] keeppackage: $line")
+                }
+                line.startsWith("-beatclass ") -> {
+                    line = line.replace("-beatclass ", "").trim()
+                    mBeatClass = line
+                    println("[MethodTraceMan] beatclass: $line")
+                }
+            }
         }
 
-
+        println("[MethodTraceMan] Config parsed - tracePackages: ${mNeedTracePackageMap.size}, whiteClasses: ${mWhiteClassMap.size}, whitePackages: ${mWhitePackageMap.size}")
     }
 
 }
-
-
