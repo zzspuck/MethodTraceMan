@@ -1,6 +1,7 @@
 package cn.cxzheng.tracemanplugin
 
 import java.io.File
+import java.io.FileNotFoundException
 import java.util.HashSet
 
 /**
@@ -12,7 +13,7 @@ class Config {
     val UNNEED_TRACE_CLASS = arrayOf("R.class", "R$", "Manifest", "BuildConfig")
 
     //插桩配置文件
-    var mTraceConfigFile: String? = null
+   public var mTraceConfigFile: String? = null
 
     //需插桩的包
     private val mNeedTracePackageMap: HashSet<String> by lazy {
