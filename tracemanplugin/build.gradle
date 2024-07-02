@@ -52,15 +52,15 @@ dependencies {
 
     //这里根据插件需要，添加对应的依赖
     // 添加了这个，就可以看 Android Gradle 插件的源码了
-    implementation "com.android.tools.build:gradle:8.1.4"
-    implementation "com.android.tools.build:gradle-api:8.1.4"
+    implementation "com.android.tools.build:gradle:7.4.2"
+    implementation "com.android.tools.build:gradle-api:7.4.2"
 
     implementation 'org.ow2.asm:asm:9.6'
     implementation 'org.ow2.asm:asm-commons:9.6'
     implementation('org.ow2.asm:asm-util:9.6')
-    implementation 'org.javassist:javassist:3.20.0-GA'
+    //implementation 'org.javassist:javassist:3.20.0-GA'
 
-    implementation 'com.android.tools.lint:lint:31.5.0'
+/*    implementation 'com.android.tools.lint:lint:31.5.0'
     implementation 'com.android.tools.lint:lint-api:31.5.0'
-    implementation 'com.android.tools.lint:lint-checks:31.5.0'
+    implementation 'com.android.tools.lint:lint-checks:31.5.0'*/
 }

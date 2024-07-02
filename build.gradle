@@ -5,18 +5,19 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url uri('./repo') }
+        maven {
+            url '\\localmaven'
+        }
         maven { url 'https://jitpack.io' }
-        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath "gradle.plugin.cn.cxzheng.methodTracePlugin:tracemanplugin:1.0.4"
+        //classpath "gradle.plugin.cn.cxzheng.methodTracePlugin:tracemanplugin:1.0.4"
 //        classpath "cn.cxzheng:asmtraceman-plugin:0.0.1-test"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+       classpath 'cn.cxzheng.methodTracePlugin:methodTracePlugin:1.0.0'
     }
 }
 
@@ -24,9 +25,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url uri('./repo') }
         maven { url 'https://jitpack.io' }
-        maven { url "https://plugins.gradle.org/m2/" }
     }
 }
 

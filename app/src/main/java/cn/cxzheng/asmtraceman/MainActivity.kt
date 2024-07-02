@@ -1,11 +1,11 @@
 package cn.cxzheng.asmtraceman
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import cn.cxzheng.asmtraceman.test.RandomTest
 import cn.cxzheng.tracemanui.MethodTraceServerManager
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        btn_click.setOnClickListener {
+        findViewById<Button>(R.id.btn_click).setOnClickListener {
 
             val randomMill = rand(0, 30)
             Toast.makeText(this, "已执行随机耗时方法", Toast.LENGTH_SHORT).show()
