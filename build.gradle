@@ -17,7 +17,7 @@ buildscript {
 //        classpath "cn.cxzheng:asmtraceman-plugin:0.0.1-test"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-       classpath 'cn.cxzheng.methodTracePlugin:methodTracePlugin:1.0.0'
+      classpath 'cn.cxzheng.methodTracePlugin:methodTracePlugin:1.0.0'
     }
 }
 

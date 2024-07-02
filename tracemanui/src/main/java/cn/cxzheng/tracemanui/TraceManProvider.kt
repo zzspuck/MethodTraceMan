@@ -41,7 +41,7 @@ class TraceManProvider : ContentProvider() {
     }
 
     override fun onCreate(): Boolean {
-        MethodTraceServerManager.startService(context)
+        MethodTraceServerManager.startService(context!!)
         return true
     }
 }

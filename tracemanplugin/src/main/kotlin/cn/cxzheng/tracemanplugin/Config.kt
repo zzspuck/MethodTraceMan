@@ -2,12 +2,13 @@ package cn.cxzheng.tracemanplugin
 
 import java.io.File
 import java.io.FileNotFoundException
+import java.io.Serializable
 import java.util.HashSet
 
 /**
  * Create by cxzheng on 2019/6/4
  */
-class Config {
+class Config:Serializable {
 
     //一些默认无需插桩的类
     val UNNEED_TRACE_CLASS = arrayOf("R.class", "R$", "Manifest", "BuildConfig")

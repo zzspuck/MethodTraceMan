@@ -7,7 +7,7 @@ import io.reactivex.subjects.Subject
 /**
  * Create by cxzheng on 2019/7/7
  */
-open class BaseProducer<T> {
+open class BaseProducer<T : Any> {
 
     private var mSubject: Subject<T> = PublishSubject.create()
 

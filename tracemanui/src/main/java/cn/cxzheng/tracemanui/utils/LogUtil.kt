@@ -16,19 +16,19 @@ class LogUtil {
         @JvmStatic
         fun detail(message: String?) {
             if (MethodTraceServerManager.logLevel == MTM_LOG_DETAIL) {
-                Log.i(DEBUG_SERVER_TAG, message)
+                message?.let { Log.i(DEBUG_SERVER_TAG, it) }
             }
         }
 
         @JvmStatic
         fun i(message: String?) {
-            Log.i(DEBUG_SERVER_TAG, message)
+            message?.let { Log.i(DEBUG_SERVER_TAG, it) }
         }
 
 
         @JvmStatic
         fun e(message: String?) {
-            Log.e(DEBUG_SERVER_TAG, message)
+            message?.let { Log.e(DEBUG_SERVER_TAG, it) }
         }
     }
 }

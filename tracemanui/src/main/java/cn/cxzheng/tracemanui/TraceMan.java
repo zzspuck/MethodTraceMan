@@ -3,7 +3,8 @@ package cn.cxzheng.tracemanui;
 import android.os.Build;
 import android.os.Looper;
 import android.os.Trace;
-import android.support.annotation.RequiresApi;
+
+import androidx.annotation.RequiresApi;
 
 import com.ctrip.ibu.hotel.debug.server.producer.module.methodcost.MethodInfo;
 

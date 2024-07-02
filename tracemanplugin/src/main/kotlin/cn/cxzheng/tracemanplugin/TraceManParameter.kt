@@ -14,6 +14,4 @@ interface TraceManParameter:InstrumentationParameters {
     val traceConfigFile:Property<String>
     @get:Input
     val logTraceInfo:Property<Boolean>
-    @get:Input
-   val project: Property<Project>
 }

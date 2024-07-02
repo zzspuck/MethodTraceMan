@@ -27,11 +27,10 @@ abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
     override fun isInstrumentable(classData: ClassData): Boolean {
         val traceManConfig = parameters.get()
         val output = traceManConfig.output.get()
-        val project = traceManConfig.project.get()
         if (output.isEmpty()) {
-            traceManConfig.output.set(
+  /*          traceManConfig.output.set(
                 project.getBuildDir().getAbsolutePath() + File.separator + "traceman_output"
-            )
+            )*/
         }
         mTraceConfig = if (traceManConfig.open.get()) {
             val traceConfig = initConfig(traceManConfig)

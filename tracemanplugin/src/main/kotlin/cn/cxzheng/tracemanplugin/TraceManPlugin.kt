@@ -37,7 +37,6 @@ class TraceManPlugin : Plugin<Project> {
                 it.open.set(extensionNew.open)
                 it.traceConfigFile.set(extensionNew.traceConfigFile)
                 it.logTraceInfo.set(extensionNew.logTraceInfo)
-                it.project.set(project)
             }
             //InstrumentationScope.ALL 配合 FramesComputationMode.COPY_FRAMES可以指定该字节码转换器在全局生效，包括第三方lib
             variant.instrumentation.setAsmFramesComputationMode(FramesComputationMode.COPY_FRAMES)
