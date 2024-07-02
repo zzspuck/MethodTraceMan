@@ -13,7 +13,7 @@ abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
         classContext: ClassContext,
         nextClassVisitor: ClassVisitor
     ): ClassVisitor {
-
+        println("createClassVisitor")
         return TraceClassVisitor(Opcodes.ASM9, nextClassVisitor, mTraceConfig!!)
     }
 
@@ -25,6 +25,7 @@ abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
     }
 
     override fun isInstrumentable(classData: ClassData): Boolean {
+        println("isInstrumentable")
         val traceManConfig = parameters.get()
         val output = traceManConfig.output.get()
         if (output.isEmpty()) {
