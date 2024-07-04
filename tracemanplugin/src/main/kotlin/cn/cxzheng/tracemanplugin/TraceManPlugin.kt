@@ -31,7 +31,7 @@ class TraceManPlugin : Plugin<Project> {
 
 
             //可以通过variant来获取当前编译环境的一些信息，最重要的是可以 variant.name 来区分是debug模式还是release模式编译
-            variant.instrumentation.transformClassesWith(TraceManTransform::class.java, InstrumentationScope.ALL) {
+            variant.instrumentation.transformClassesWith(TraceManTransform::class.java, InstrumentationScope.PROJECT) {
                 //配置通过指定配置的类，携带到TimeCostTransform中
                 it.output.set(extensionNew.output)
                 it.open.set(extensionNew.open)

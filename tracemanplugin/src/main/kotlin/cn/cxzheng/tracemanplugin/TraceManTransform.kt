@@ -7,14 +7,16 @@ import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.Opcodes
 import java.io.File
 
-abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
-    private var mTraceConfig: Config? = null
+abstract class TraceManTransform: AsmClassVisitorFactory<TraceManParameter> {
     override fun createClassVisitor(
         classContext: ClassContext,
         nextClassVisitor: ClassVisitor
     ): ClassVisitor {
-        println("createClassVisitor")
-        return TraceClassVisitor(Opcodes.ASM9, nextClassVisitor, mTraceConfig!!)
+        println("MethodTraceMan createClassVisitor")
+        val traceManConfig = parameters.get()
+        val traceConfig = initConfig(traceManConfig)
+        traceConfig.parseTraceConfigFile()
+        return TraceClassVisitor(Opcodes.ASM9, nextClassVisitor,traceConfig)
     }
 
     private fun initConfig(configuration: TraceManParameter): Config {
@@ -25,21 +27,22 @@ abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
     }
 
     override fun isInstrumentable(classData: ClassData): Boolean {
-        println("isInstrumentable")
+        println("MethodTraceMan isInstrumentable")
         val traceManConfig = parameters.get()
-        val output = traceManConfig.output.get()
-        if (output.isEmpty()) {
-  /*          traceManConfig.output.set(
+        //val output = traceManConfig.output.get()
+     /*   if (output.isEmpty()) {
+            traceManConfig.output.set(
                 project.getBuildDir().getAbsolutePath() + File.separator + "traceman_output"
-            )*/
+            )
+        }*/
+        val traceConfig = initConfig(traceManConfig).apply {
+            parseTraceConfigFile()
         }
-        mTraceConfig = if (traceManConfig.open.get()) {
-            val traceConfig = initConfig(traceManConfig)
-            traceConfig.parseTraceConfigFile()
-            traceConfig
+
+        if (traceConfig.isNeedTraceClass(classData.className)) {
+            return true
         } else {
-            Config()
+            return false
         }
-        return true
     }
 }
