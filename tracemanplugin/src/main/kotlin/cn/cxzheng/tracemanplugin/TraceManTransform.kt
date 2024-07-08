@@ -27,7 +27,7 @@ abstract class TraceManTransform: AsmClassVisitorFactory<TraceManParameter> {
     }
 
     override fun isInstrumentable(classData: ClassData): Boolean {
-        println("MethodTraceMan isInstrumentable")
+        println("MethodTraceMan isInstrumentable"+ classData.className)
         val traceManConfig = parameters.get()
         //val output = traceManConfig.output.get()
      /*   if (output.isEmpty()) {
